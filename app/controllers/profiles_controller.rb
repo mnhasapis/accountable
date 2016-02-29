@@ -13,5 +13,7 @@ class ProfilesController < ApplicationController
   def index
     #This sets @users to every User in our database
     @users = User.all
+   
+    
   end
 end
