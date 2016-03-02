@@ -9,13 +9,41 @@ check_box {
   display: none
 }
 
-tr {
-  text-overflow: ellipsis;
+.hero {
+  margin-bottom: 100px;
+  margin-left: 0;
+  padding-left: 0;
+  height: 400px;
+  background-image: url("https://images.unsplash.com/photo-1456613820599-bfe244172af5?crop=entropy&fit=crop&fm=jpg&h=725&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1125");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 100%;
+  z-index: -2;
 }
-.navimg {
-  margin-top: 10px;
+.overlay {
+  background-color: #000;
+  height:400px;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 100%;
+  opacity: 0.3;
+  z-index: -1;
 }
 
-.navbar {
-  margin-bottom: 0;
+.hero-text {
+  color: #fff;
+  height: 400px;
 }
+
+.padtop100 {
+  padding-top: 100px;
+}
+.padtop150 {
+  padding-top: 150px;
+}
+
