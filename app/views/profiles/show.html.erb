@@ -1,6 +1,6 @@
 <h1>User Profiles</h1>
 
-<%= image_tag(current_user.avatar.url(:small), class: "img-thumbnail") %>
+<%= image_tag(@user.avatar.url(:small), class: "img-thumbnail") %>
 <%= @user.first_name %> <%= @user.last_name %><br />
 <%= @user.username %><br />
 
