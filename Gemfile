@@ -15,6 +15,7 @@ gem 'paperclip'
 gem 'omniauth-twitter'
 gem 'simple_calendar', '~> 2.0'
 gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   gem 'byebug'
