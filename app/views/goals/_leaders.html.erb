@@ -1,21 +1,18 @@
-<% @goals.each do |goal| %>
-<% goal.user.id %>
-<%end%>
-<%# @users.goals.count %>
-<%= @goals.count %>
-<%= @goals.count(:completed_at, :user_id) %>
-<%= @goals.count(:completed_at) - @goals.count(:user_id) %>
-<%# @users.goals.sum(:completed_at) %>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><h4>Leader Board</h4></div>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Points</th>
-  </tr>
-    <% @users.sort_by{|x| x.goals.count(:completed_at) }.reverse.each do |x| %>
-      <tr>
-        <td><%= x.username %></td>
-        <td><%= x.goals.count(:completed_at) * 10 %></td>
-      </tr>
-    <% end %>
-</table>
+  <!-- Table -->
+  <table class="table">
+    <tr>
+      <th>User</th>
+      <th>Points</th>
+    </tr>
+      <% @users.sort_by{|x| x.goals.count(:completed_at) }.reverse.each do |x| %>
+        <tr>
+          <td><%= x.username %></td>
+          <td><%= x.goals.count(:completed_at) * 10 %></td>
+        </tr>
+      <% end %>
+  </table>
+</div>

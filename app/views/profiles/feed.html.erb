@@ -46,10 +46,9 @@
 <div class="panel panel-default">
   <div class="panel-body">
       <h5>My <%= current_user.goals.count %> Current Goals</h5>
-      
-      <%= calendar number_of_days: 7 do |date| %>
+      <%= week_calendar events: @goals do |date, goals| %>
       <%= date.day %>
-      <% @goals.each do |goal|%>
+      <% goals.each do |goal|%>
       <% unless goal.completed? %>
       <br />
       <%= goal.name %><br />
@@ -58,12 +57,17 @@
       <%= check_box_tag :done %>
       <% end %>
       <% end %>
+<<<<<<< HEAD
       <%end%>
       
  
+=======
+      <% end %>
+      <%= will_paginate @goals, renderer: BootstrapPagination::Rails %>
+>>>>>>> 328e523a17a2523a44c23ccd87bbe8cd67841555
       </div>
     </div>
-    
+
 <!-- - - - - - - - - Completed Goals - - - - - - - - -->
     <div class="panel panel-default">
       <div class="panel-body">
@@ -74,7 +78,7 @@
       <%= goal.name %><br />
       <%=goal.completed_at.strftime("%D") %>
       <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
-       
+
       <% end %>
       <% end %>
       </div>
@@ -104,4 +108,3 @@
 
   </div> <!-- Right Column End -->
 </div>
-

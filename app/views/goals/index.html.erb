@@ -6,80 +6,55 @@
   </div>
 </div>
 
-<% @goals.each do |goal| %>
-<% if goal.completed? %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title"><strike>Goal name: <%= goal.name %></strike> <%= goal.user.username %> has accomplished this goal!</h3>
-    </div>
-    <div class="panel-body">
-        
-      <%= goal.description %>
-      <% if current_user.id == goal.user.id %>
-      
-        <%# link_to 'Edit', edit_goal_path(goal) %>
-        
-        <%= link_to edit_goal_path(goal), method: :patch do %>
-								<i class="fa fa-pencil-square fa-lg"></i>
-							<% end %>
-         
-        <%# link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <%= link_to goal, method: :delete, data: { confirm: "Are you sure?" } do %>
-								<i class="fa fa-trash fa-lg"></i>
-							<% end %>
-      <% end %>
-      
-    </div>
-    <div class="panel-footer">
-      <%= goal.user.username %>’s <%= link_to 'goal', goal %>
-    </div>
-  </div>
-   <%else%> 
-    <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Goal name: <%= goal.name %></h3>
-    </div>
-    <div class="panel-body">
-      <div class = "col-md-2">
-    <p><%= goal.description %></p>
+
+
+
+  <div class="row">
+<!-- Left Column -->
+  <div class="col-xs-8">
+    <% @goals.each do |goal| %>
+    <% if goal.completed? %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strike>Goal name: <%= goal.name %></strike> <%= goal.user.username %> has accomplished this goal!</h3>
+        </div>
+        <div class="panel-body">
+
+
+          <%= image_tag(goal.user.avatar.url(:navpic)) %> <%= goal.description %>
+          <% if current_user.id == goal.user.id %>
+            <%= link_to 'Edit', edit_goal_path(goal) %>
+            <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+        <div class="panel-footer">
+          <%= goal.user.username %>’s <%= link_to 'goal', goal %>
+        </div>
       </div>
-      <% if current_user.id == goal.user.id %>
-        <%#link_to 'I DID IT!', complete_goal_path(goal), method: :patch %>
-        
-        <%= link_to complete_goal_path(goal), method: :patch do %>
-								<i class="fa fa-check-circle fa-lg"></i>
-							<% end %>
-							
-							
-        <%= link_to edit_goal_path(goal), method: :patch do %>
-								<i class="fa fa-pencil-square fa-lg"></i>
-							<% end %>
-						
-							
-        <%# link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <%= link_to goal, method: :delete, data: { confirm: "Are you sure?" } do %>
-								<i class="fa fa-trash fa-lg"></i>
-							<% end %>
-							
-        
-      <%# end %>
-    </div>
-    <div class="panel-footer">
-      <%= link_to complete_goal_path(goal), method: :patch do %>
-								<i class="fa fa-check-circle fa-lg"></i>
-							<% end %>
-      <%= goal.user.username %>’s <%= link_to 'goal', goal %>
-      <%= link_to goal, method: :delete, data: { confirm: "Are you sure?" } do %>
-								<i class="fa fa-trash fa-lg"></i>
-							<% end %>
-			<%= link_to edit_goal_path(goal), method: :patch do %>
-								<i class="fa fa-pencil-square fa-lg"></i>
-							<% end %>
-			<% end %>
-    </div>
+       <%else%>
+        <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Goal name: <%= goal.name %></h3>
+        </div>
+        <div class="panel-body">
+          <%= image_tag(goal.user.avatar.url(:navpic)) %> <%= goal.description %>
+          <% if current_user.id == goal.user.id %>
+             <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch %>
+            <%= link_to 'Edit', edit_goal_path(goal) %>
+            <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+        <div class="panel-footer">
+          <%= goal.user.username %>’s <%= link_to 'goal', goal %>
+        </div>
+      </div>
+    <% end %>
+    <%end%>
+    <%= will_paginate @goals, renderer: BootstrapPagination::Rails %>
   </div>
-<% end %>
-<%end%>
-<%= render 'leaders' %>
 
-
+<!-- Right Column -->
+  <div class="col-xs-4">
+    <%= render 'leaders' %>
+  </div>
+</div>

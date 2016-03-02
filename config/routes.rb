@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   get "mypage" => "profiles#feed"
 
   get "profiles/:id" => "profiles#show", as: :profile
-  
- 
 
-  root 'goals#index'
-  #root 'profiles#feed'
+  get 'goals/index' => "goals#index"
+
+  root 'welcome#index'
+
 
 end

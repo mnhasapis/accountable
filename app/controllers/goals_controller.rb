@@ -5,9 +5,8 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all.order("created_at DESC")
+    @goals = Goal.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
     @users = User.all
-    
   end
 
   # GET /goals/1
@@ -32,8 +31,8 @@ class GoalsController < ApplicationController
   # POST /goals
   # POST /goals.json
   def create
-   
-    
+
+
     @goal = current_user.goals.build(goal_params)
         if @goal.save
             redirect_to root_path
@@ -79,7 +78,7 @@ class GoalsController < ApplicationController
       @goal.update_attribute(:completed_at, Time.now)
       redirect_to root_path
     end
- 
+
 
   private
 
@@ -90,6 +89,9 @@ class GoalsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def goal_params
-    params.require(:goal).permit(:name, :description, :user_id,  :start_time)
+
+
+    params.require(:goal).permit(:name, :description, :user_id, :avatar, :start_time)
+
   end
 end

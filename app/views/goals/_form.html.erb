@@ -19,15 +19,15 @@
     <%= f.text_area :description, class: "form-control", placeholder: "Goal Description", rows: 5 %>
   </div>
   <div class="field">
-    <%# f.label :start, class: "sr-only" %><br>
-    <%# f.date_field :start_time, class: "form-control" %>
-    <%= f.datetime_select :start_time %>
+    <%= f.label :start, class: "sr-only" %><br>
+    <%= f.date_field :start_time, class: "form-control" %>
+   
   </div>
   <div class="field cant-see-me">
     <%= f.label :user_id %><br>
     <%= f.number_field :user_id, value: current_user.id %>
-  </div
-  v
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -9,7 +9,7 @@
         <% @users.each do |user| %>
           <h3><%= image_tag(user.avatar.url(:navpic)) %> <%= link_to user.username, profile_path(user) %></h3>
         <% end %>
-        
+  
       </div>
     </div>
   </div>

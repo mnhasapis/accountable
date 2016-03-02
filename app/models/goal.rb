@@ -3,9 +3,8 @@ class Goal < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments
-  
+
   def completed?
         !completed_at.blank?
-    
   end
 end
