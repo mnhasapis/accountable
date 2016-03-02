@@ -1,14 +1,20 @@
-<h1>User Profiles</h1>
 
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h1><%= @user.username %></h1></div>
+
+
+<div class="panel-body">
 <%= image_tag(@user.avatar.url(:small), class: "img-thumbnail") %>
-<%= @user.first_name %> <%= @user.last_name %><br />
-<%= @user.username %><br />
+<p><%= @user.first_name %> <%= @user.last_name %></p><br />
+
 
 <%= @user.goals.count %> <span class="small text">Goals</span><br />
-<%= @user.bio %>
-<%= @user.location %>
+<p>Bio:  <%= @user.bio %></p>
+<p></p>Location:  <%= @user.location %></p>
 Joined in <%= @user.created_at.strftime("%B %Y") %>
-
+</div>
+</div>
 <!-- Following and Unfollowing users -->
 
 <% if current_user.id != @user.id %>
