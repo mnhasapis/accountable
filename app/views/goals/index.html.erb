@@ -16,9 +16,19 @@
         
       <%= goal.description %>
       <% if current_user.id == goal.user.id %>
-        <%= link_to 'Edit', edit_goal_path(goal) %>
-        <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+      
+        <%# link_to 'Edit', edit_goal_path(goal) %>
+        
+        <%= link_to edit_goal_path(goal), method: :patch do %>
+								<i class="fa fa-pencil-square fa-lg"></i>
+							<% end %>
+         
+        <%# link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to goal, method: :delete, data: { confirm: "Are you sure?" } do %>
+								<i class="fa fa-trash fa-lg"></i>
+							<% end %>
       <% end %>
+      
     </div>
     <div class="panel-footer">
       <%= goal.user.username %>’s <%= link_to 'goal', goal %>
@@ -30,16 +40,42 @@
       <h3 class="panel-title">Goal name: <%= goal.name %></h3>
     </div>
     <div class="panel-body">
-      <%= goal.description %>
+      <div class = "col-md-2">
+    <p><%= goal.description %></p>
+      </div>
       <% if current_user.id == goal.user.id %>
-        <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch %>
-        <%= link_to 'Edit', edit_goal_path(goal) %>
-        <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
-       
-      <% end %>
+        <%#link_to 'I DID IT!', complete_goal_path(goal), method: :patch %>
+        
+        <%= link_to complete_goal_path(goal), method: :patch do %>
+								<i class="fa fa-check-circle fa-lg"></i>
+							<% end %>
+							
+							
+        <%= link_to edit_goal_path(goal), method: :patch do %>
+								<i class="fa fa-pencil-square fa-lg"></i>
+							<% end %>
+						
+							
+        <%# link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to goal, method: :delete, data: { confirm: "Are you sure?" } do %>
+								<i class="fa fa-trash fa-lg"></i>
+							<% end %>
+							
+        
+      <%# end %>
     </div>
     <div class="panel-footer">
+      <%= link_to complete_goal_path(goal), method: :patch do %>
+								<i class="fa fa-check-circle fa-lg"></i>
+							<% end %>
       <%= goal.user.username %>’s <%= link_to 'goal', goal %>
+      <%= link_to goal, method: :delete, data: { confirm: "Are you sure?" } do %>
+								<i class="fa fa-trash fa-lg"></i>
+							<% end %>
+			<%= link_to edit_goal_path(goal), method: :patch do %>
+								<i class="fa fa-pencil-square fa-lg"></i>
+							<% end %>
+			<% end %>
     </div>
   </div>
 <% end %>

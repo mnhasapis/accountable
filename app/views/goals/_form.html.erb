@@ -19,8 +19,9 @@
     <%= f.text_area :description, class: "form-control", placeholder: "Goal Description", rows: 5 %>
   </div>
   <div class="field">
-    <%= f.label :start, class: "sr-only" %><br>
-    <%= f.date_field :start_time, class: "form-control" %>
+    <%# f.label :start, class: "sr-only" %><br>
+    <%# f.date_field :start_time, class: "form-control" %>
+    <%= f.datetime_select :start_time %>
   </div>
   <div class="field cant-see-me">
     <%= f.label :user_id %><br>
