@@ -14,7 +14,7 @@
     <% if goal.completed? %>
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title"><strike>Goal name: <%= goal.name %></strike> <%= goal.user.username %> has accomplished this goal!</h3>
+          <h3 class="panel-title"><strike>Goal name: <%= link_to goal.name, goal %></strike> <%= goal.user.username %> has accomplished this goal!</h3>
         </div>
         <div class="panel-body">
 
@@ -32,7 +32,7 @@
        <%else%>
         <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Goal name: <%= goal.name %></h3>
+          <h3 class="panel-title">Goal name: <%= link_to goal.name, goal %></h3>
         </div>
         <div class="panel-body">
           <%= image_tag(goal.user.avatar.url(:navpic)) %> <%= goal.description %>

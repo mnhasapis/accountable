@@ -51,7 +51,8 @@
       <% goals.each do |goal|%>
       <% unless goal.completed? %>
       <br />
-      <%= goal.name %><br />
+      <%= link_to goal.name, goals %>
+      <%# goal.name %><br />
       <%= link_to 'DONE!', complete_goal_path(goal), method: :patch, class:"btn btn-primary btn-xs" %>
       <% end %>
       <% end %>

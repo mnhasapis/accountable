@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get "profiles/:id" => "profiles#show", as: :profile
 
   get 'goals/index' => "goals#index"
+  
+  get 'goals/:id' => 'goals#show'
 
   root 'welcome#index'
 
