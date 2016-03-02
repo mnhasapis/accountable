@@ -13,7 +13,7 @@ Joined in <%= @user.created_at.strftime("%B %Y") %>
 
 <% if current_user.id != @user.id %>
   <% if current_user.friends.include?(@user) %>
-    <%= link_to "Following", relationship_path(current_user.relationships.find_by_friend_id(@user)), :method => :delete, class: "btn btn-primary", id:"unfollow_btn" %>
+    <%= link_to "Following", relationship_path(current_user.relationships.find_by_friend_id(@user)), :method => :delete, class: "btn btn-primary btn-xs", id:"unfollow_btn" %>
   <% else %>
     <%= link_to "Follow", relationships_path(:friend_id => @user), method: :post, class: "btn btn_success" %>
   <% end %>

@@ -21,6 +21,7 @@
         </div>
       </div>
 <!-- Right personal info panel -->
+
       <div class="col-xs-7">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -31,7 +32,6 @@
           </div>
         </div>
       </div>
-
     </div> <!-- Row -->
   </div>
 </div>
@@ -46,14 +46,13 @@
 <div class="panel panel-default">
   <div class="panel-body">
       <h5>My <%= current_user.goals.count %> Current Goals</h5>
-      <%= week_calendar events: @goals do |date, goals| %>
+       <%= week_calendar events: @goals do |date, goals| %>
       <%= date.day %>
       <% goals.each do |goal|%>
       <% unless goal.completed? %>
       <br />
       <%= goal.name %><br />
-      <%# link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
-       <%= link_to 'DONE!', complete_goal_path(goal), method: :patch %>
+      <%= link_to 'DONE!', complete_goal_path(goal), method: :patch, class:"btn btn-primary btn-xs" %>
       <% end %>
       <% end %>
 
