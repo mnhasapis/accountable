@@ -28,9 +28,9 @@ Joined in <%= @user.created_at.strftime("%B %Y") %>
 <br /><br />
 
 <!-- User goals -->
-
+<h3>Current Goals</h3>
 <% @user.goals.each do |goal| %>
-<strong>Goal: <%= goal.name %></strong><br />
+<strong>Goal: <%= goal.name %><%= link_to goal.name, goal %></strong><br />
 <%= goal.description %><br />
 <hr />
 <% end %>
