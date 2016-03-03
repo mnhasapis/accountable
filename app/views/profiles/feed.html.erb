@@ -1,6 +1,6 @@
 
 <!-- - - - - - User personal and account info - - - - - -->
-<div class="panel panel-default">
+<div class="panel panel-default my-p-panel">
   <div class="panel-body">
     <div class="row">
 <!-- Left personal info panel -->
@@ -9,13 +9,16 @@
       </div>
 <!-- Center personal info panel -->
       <div class="col-xs-3">
-        <div class="panel panel-default">
+        <div class="panel panel-default profile">
           <div class="panel-heading">
             <h3 class="panel-title">Details</h3>
           </div>
           <div class="panel-body">
+            <strong>Username</strong><br />
             <%= current_user.username %><br />
+            <strong>Name</strong><br />
             <%= current_user.first_name %> <%= current_user.last_name %><br />
+            <strong>Location</strong><br />
             <%= current_user.location %>
           </div>
         </div>
@@ -23,7 +26,7 @@
 <!-- Right personal info panel -->
 
       <div class="col-xs-7">
-        <div class="panel panel-default">
+        <div class="panel panel-default profile">
           <div class="panel-heading">
             <h3 class="panel-title">Bio</h3>
           </div>
@@ -44,8 +47,10 @@
 <!-- - - - - - - - - - - User Goals - - - - - - - - - -->
 
 <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">My <%= current_user.goals.count %> Current Goals</h3>
+  </div>
   <div class="panel-body">
-      <h5>My <%= current_user.goals.count %> Current Goals</h5>
        <%= week_calendar events: @goals do |date, goals| %>
       <%= date.day %>
       <% goals.each do |goal|%>
@@ -69,14 +74,16 @@
 
 <!-- - - - - - - - - Completed Goals - - - - - - - - -->
     <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">My Completed Goals</h3>
+      </div>
       <div class="panel-body">
-        <h5>My Completed Goals</h5>
          <% @goals.each do |goal|%>
       <% if goal.completed? %>
       <br />
       <%= goal.name %><br />
       <%=goal.completed_at.strftime("%D") %>
-      <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
 
       <% end %>
       <% end %>
@@ -90,16 +97,20 @@
 
 <!-- - - - - - - - - - New Goals Form - - - - - - - - - -->
     <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">New Goal</h3>
+      </div>
       <div class="panel-body">
-        <strong>New Goal</strong>
         <%= render 'goals/form' %>
       </div>
     </div>
 
 <!-- - - - - - - - - - - - Friends - - - - - - - - - - - -->
     <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Friends</h3>
+      </div>
       <div class="panel-body">
-        <h5>Friends</h5>
         <%= current_user.relationships.count %> friends I follow.<br />
         <%= current_user.inverse_relationships.count %> follow me.
       </div>

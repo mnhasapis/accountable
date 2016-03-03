@@ -2,12 +2,12 @@
 @import "bootstrap";
 
 .cant-see-me {
-  display: none
+  display: none;
 }
 // *= require simple_calendar
 
 check_box {
-  display: none
+  display: none;
 }
 
 .hero {
@@ -25,9 +25,10 @@ check_box {
   width: 100%;
   z-index: -2;
 }
+
 .overlay {
   background-color: #000;
-  height:400px;
+  height: 400px;
   position: absolute;
   left: 0;
   top: 50px;
@@ -44,6 +45,77 @@ check_box {
 .padtop100 {
   padding-top: 100px;
 }
+
 .padtop150 {
   padding-top: 150px;
+}
+
+body {
+  background-color: #fefafa;
+}
+
+.panel {
+box-shadow: 3px 3px 10px #888;
+}
+
+.profile {
+  box-shadow: none;
+}
+
+.panel > .panel-heading {
+    background-color: #428bca;
+    color: white;
+}
+
+.panel > .panel-footer {
+    background-color: #428bca;
+    color: white;
+}
+
+.leader {
+  text-align: center;
+  background-color: #d9534f !important;
+  color: white;
+}
+
+.title {
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+.p-panel {
+  margin-bottom: 0px;
+}
+
+.my-p-panel {
+  margin-bottom: 30px;
+}
+
+.comment-goal {
+  margin-top: -20px;
+}
+
+.motivation {
+  margin-top: -100px;
+}
+
+.navimg {
+  margin-top: 10px;
+}
+
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.nav {
+  font-size: 1.4em;
+}
+
+.title {
+  font-family: 'Droid Serif', serif;
+}
+
+.panel-title {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.4em;
 }

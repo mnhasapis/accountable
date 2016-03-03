@@ -1,10 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h1>All Goals</h1>
-  </div>
-</div>
+    <h1 class="title">All Goals</h1>
 
 
   <div class="row">
@@ -21,29 +17,31 @@
 
           <%= image_tag(goal.user.avatar.url(:navpic)) %> <%= goal.description %>
           <% if current_user.id == goal.user.id %>
-            <%= link_to 'Edit', edit_goal_path(goal) %>
-            <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Edit', edit_goal_path(goal), class: "btn btn-primary btn-xs" %>
+            <%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
           <% end %>
         </div>
         <div class="panel-footer">
-          <%= goal.user.username %>’s <%= link_to 'goal', goal %>
+          <%= goal.user.username %>’s <%= link_to 'Goal', goal, class: "btn btn-default btn-xs" %>
         </div>
       </div>
        <%else%>
         <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Goal name: <%= link_to goal.name, goal %></h3>
+
+          <h3 class="panel-title"><strong>Goal name: </strong><%= goal.name %></h3>
+
         </div>
         <div class="panel-body">
           <%= image_tag(goal.user.avatar.url(:navpic)) %> <%= goal.description %>
           <% if current_user.id == goal.user.id %>
-             <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch %>
-            <%= link_to 'Edit', edit_goal_path(goal) %>
-            <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch , class: "btn btn-success btn-xs"%>
+            <%= link_to 'Edit', edit_goal_path(goal), class: "btn btn-primary btn-xs" %>
+            <%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger btn-xs"%>
           <% end %>
         </div>
         <div class="panel-footer">
-          <%= goal.user.username %>’s <%= link_to 'goal', goal %>
+          <%= goal.user.username %>’s <%= link_to 'Goal', goal , class: "btn btn-default btn-xs"%>
         </div>
       </div>
     <% end %>

@@ -25,9 +25,9 @@
   <div class="field cant-see-me">
     <%= f.label :user_id %><br>
     <%= f.number_field :user_id, value: current_user.id %>
-  </div>
-  
+  </div><br />
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary btn-xs btn-block" %>
   </div>
 <% end %>

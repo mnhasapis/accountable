@@ -1,20 +1,50 @@
 
 
-<div class="panel panel-default">
-  <div class="panel-heading"><h1><%= @user.username %></h1></div>
+    <h1 class="title"><%= @user.username %>'s Profile</h1>
 
+<!-- User Profile Panel -->
 
-<div class="panel-body">
-<%= image_tag(@user.avatar.url(:small), class: "img-thumbnail") %>
-<p><%= @user.first_name %> <%= @user.last_name %></p><br />
-
-
-<%= @user.goals.count %> <span class="small text">Goals</span><br />
-<p>Bio:  <%= @user.bio %></p>
-<p></p>Location:  <%= @user.location %></p>
-Joined in <%= @user.created_at.strftime("%B %Y") %>
+<div class="panel panel-default p-panel">
+  <div class="panel-body">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="col-md-2">
+        <%= image_tag(@user.avatar.url(:small), class: "img-thumbnail") %><br />
+          Joined in <%= @user.created_at.strftime("%B %Y") %><br />
+        <%= @user.goals.count %> <span class="small text">Goals</span><br />
+      </div>
+      <!-- Center Column -->
+      <div class="col-md-3">
+        <div class="panel panel-default profile">
+          <div class="panel-heading">
+            <h3 class="panel-title">Details</h3>
+          </div>
+          <div class="panel-body">
+            <strong>Username</strong><br />
+            <%= @user.username %><br />
+            <strong>Name</strong><br />
+            <%= @user.first_name %> <%= @user.last_name %><br />
+            <strong>Location</strong><br />
+            <%= @user.location %>
+          </div>
+        </div>
+      </div>
+      <!-- Right Column -->
+      <div class="col-md-7">
+        <div class="panel panel-default profile">
+          <div class="panel-heading">
+            <h3 class="panel-title">Bio</h3>
+          </div>
+          <div class="panel-body">
+            <%= @user.bio %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
+
+
 <!-- Following and Unfollowing users -->
 
 <% if current_user.id != @user.id %>
@@ -27,10 +57,45 @@ Joined in <%= @user.created_at.strftime("%B %Y") %>
 
 <br /><br />
 
-<!-- User goals -->
-<h3>Current Goals</h3>
-<% @user.goals.each do |goal| %>
-<strong>Goal: <%= goal.name %><%= link_to goal.name, goal %></strong><br />
-<%= goal.description %><br />
-<hr />
-<% end %>
+
+<div class="row">
+  <!-- Left Column -->
+
+  <div class="col-md-6">
+    <!-- User goals -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Current Goals</h3>
+      </div>
+      <div class="panel-body">
+        <% @user.goals.each do |goal| %><%= link_to goal.name, goal %> <br />
+        <%= goal.description %><br />
+        <hr />
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Column -->
+    <div class="col-md-6">
+      <!-- User's completed goals -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Completed Goals</h3>
+        </div>
+        <div class="panel-body">
+          <% @user.goals.each do |goal|%>
+            <% if goal.completed? %>
+            <br />
+            <%= goal.name %><br />
+            <%=goal.completed_at.strftime("%D") %>
+            <%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <hr />
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
