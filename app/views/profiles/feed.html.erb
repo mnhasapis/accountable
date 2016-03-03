@@ -51,12 +51,12 @@
     <h3 class="panel-title">My <%= current_user.goals.count %> Current Goals</h3>
   </div>
   <div class="panel-body">
-       <%= week_calendar events: @goals do |date, goals| %>
+      <%= week_calendar events: @goals do |date, goals| %>
       <%= date.day %>
       <% goals.each do |goal|%>
       <% unless goal.completed? %>
       <br />
-      <%= link_to goal.name, goals %>
+      <%= link_to goal.name, goal %>
       <%# goal.name %><br />
       <%= link_to 'DONE!', complete_goal_path(goal), method: :patch, class:"btn btn-primary btn-xs" %>
       <% end %>
@@ -81,7 +81,8 @@
          <% @goals.each do |goal|%>
       <% if goal.completed? %>
       <br />
-      <%= goal.name %><br />
+       <%= link_to goal.name, goal %>
+      <%# goal.name %><br />
       <%=goal.completed_at.strftime("%D") %>
       <%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
 
